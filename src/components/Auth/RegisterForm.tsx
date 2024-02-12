@@ -3,6 +3,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
+import { TextInput } from "common/ui/inputs/TextInput";
+import { AuthFormButton } from "common/ui/Buttons/AuthFormButton";
 
 const registerSchema = z.object({
   fullName: z
@@ -39,36 +41,43 @@ export function RegisterForm() {
   }
 
   return (
-    <div>
-      <h4>Register Individual Account!</h4>
-      <p>For the purpose of industry regulation, your details are required.</p>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>
-            <span>Your Fullname*</span>
-            <input type="text" {...register("fullName")} />
-          </label>
-        </div>
-        <div>
-          <label>
-            <span>Email address*</span>
-            <input type="email" {...register("email")} />
-          </label>
-        </div>
+    <div className={"bg-white max-w-[426px] ml-16"}>
+      <div className={"mb-10"}>
+        <h4 className={"text-black font-bold text-3xl"}>
+          Register Individual Account!
+        </h4>
+        <p className={"text-[#8692A6] text-lg font-medium"}>
+          For the purpose of industry regulation, your details are required.
+        </p>
+      </div>
 
-        <div>
-          <label>
-            <span>Create password*</span>
-            <input type="password" {...register("password")} />
-          </label>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={"flex flex-col gap-6"}>
+          <TextInput
+            label={"Your Fullname*"}
+            {...register("fullName")}
+            placeholder={"Enter your full name"}
+          />
+          <TextInput
+            type={"email"}
+            {...register("email")}
+            label={"Email address*"}
+            placeholder={"Enter email address"}
+          />
+          <TextInput
+            type={"password"}
+            {...register("password")}
+            label={"Create password*"}
+            placeholder={"Enter new password"}
+          />
+          <div>
+            <label>
+              <input type="checkbox" />
+              <span>I agree to terms & conditions</span>
+            </label>
+          </div>
         </div>
-        <div>
-          <label>
-            <input type="checkbox" />
-            <span>I agree to terms & conditions</span>
-          </label>
-        </div>
-        <button type="submit">Register Account</button>
+        <AuthFormButton>Register Account</AuthFormButton>
       </form>
     </div>
   );

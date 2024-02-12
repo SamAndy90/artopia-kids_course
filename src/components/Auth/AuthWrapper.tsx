@@ -27,7 +27,7 @@ export const AuthWrapper = ({ children }: PropsWithChildren) => {
           </p>
         </div>
       </div>
-      <div className={"basis-1/2"}>{children}</div>
+      <div className={"basis-1/2 bg-white pl-5 pr-12 py-16"}>{children}</div>
     </section>
   );
 };
