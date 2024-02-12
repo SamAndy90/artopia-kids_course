@@ -10,8 +10,8 @@ export default function Header() {
   if (pathname.includes("/login") || pathname.includes("/register")) return;
 
   return (
-    <header className="Header fixed mt-5 flex items-center justify-between">
-      <h1 className=" font-bold font-size-40px text-white">Artopia</h1>
+    <header className="w-[1310px] h-12 fixed mt-5 flex items-center justify-between">
+      <h1 className=" font-bold text-[40px] text-white">Artopia</h1>
       <Navigation />
       <HeaderBtn />
     </header>

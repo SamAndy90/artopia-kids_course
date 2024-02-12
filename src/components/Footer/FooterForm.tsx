@@ -23,10 +23,10 @@ export function FooterForm() {
       >
         <Image
           src={arrowImg}
+          alt={"decor"}
           width="28"
           height="28"
-          className=" ml-[7px]
-         size-4"
+          className=" ml-[7px] size-4"
         />
       </button>
     </form>
