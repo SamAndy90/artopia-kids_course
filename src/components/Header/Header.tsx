@@ -7,7 +7,12 @@ import Navigation from "./Navigation";
 export default function Header() {
   const pathname = usePathname();
 
-  if (pathname.includes("/login") || pathname.includes("/register")) return;
+  if (
+    pathname.includes("/login") ||
+    pathname.includes("/register") ||
+    pathname.includes("/verification")
+  )
+    return;
 
   return (
     <header className="w-[1310px] h-12 fixed mt-5 flex items-center justify-between">
