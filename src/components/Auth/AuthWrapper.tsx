@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import CastleIMG from "./static/castle.jpg";
+import CastleIMG from "../../../public/castle.jpg";
 import Image from "next/image";
 
 type AuthWrapperProps = {

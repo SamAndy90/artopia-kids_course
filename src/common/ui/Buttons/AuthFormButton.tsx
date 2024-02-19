@@ -11,7 +11,7 @@ export function AuthFormButton({ children, className }: AuthFormButtonProps) {
     <button
       type={"submit"}
       className={clsx(
-        "bg-standart_violet-500 text-white text-lg font-medium rounded-md w-full py-5 px-8 flex items-center justify-center hover:bg-standart_violet-400 transition-colors",
+        "bg-_violet-500 text-white text-lg font-medium rounded-md w-full py-5 px-8 flex items-center justify-center hover:bg-_violet-600 transition-colors",
         className
       )}
     >

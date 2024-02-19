@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { TextInput } from "common/ui/inputs/TextInput";
 import { AuthFormButton } from "common/ui/Buttons/AuthFormButton";
+import { getDefaults } from "utils/zod";
 
 const loginSchema = z.object({
   email: z.string().email("Email is required").default(""),
@@ -20,10 +21,7 @@ export function LoginForm() {
     reset,
     formState: { errors, isLoading },
   } = useForm<Form>({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
+    defaultValues: getDefaults(loginSchema),
     resolver: zodResolver(loginSchema),
   });
 
