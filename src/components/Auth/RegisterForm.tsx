@@ -8,7 +8,7 @@ import { AuthFormButton } from "common/ui/Buttons/AuthFormButton";
 import { getDefaults } from "utils/zod";
 
 const registerSchema = z.object({
-  fullName: z
+  fullname: z
     .string()
     .min(1, "Your name must be at least 1 character")
     .default(""),
@@ -27,7 +27,7 @@ export function RegisterForm() {
     handleSubmit,
     register,
     reset,
-    formState: { errors, isLoading },
+    formState: { errors },
   } = useForm<Form>({
     defaultValues: getDefaults(registerSchema),
     resolver: zodResolver(registerSchema),
@@ -35,6 +35,13 @@ export function RegisterForm() {
 
   function onSubmit(data: Form) {
     console.log(data);
+    fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
     reset();
   }
 
@@ -53,9 +60,9 @@ export function RegisterForm() {
         <div className={"flex flex-col gap-6"}>
           <TextInput
             label={"Your Fullname*"}
-            {...register("fullName")}
+            {...register("fullname")}
             placeholder={"Enter your full name"}
-            helperText={errors.fullName?.message ?? ""}
+            helperText={errors.fullname?.message ?? ""}
           />
           <TextInput
             type={"email"}

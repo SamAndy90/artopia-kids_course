@@ -4,17 +4,17 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import Link from "next/link";
 
-export default function Navigation() {
+export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex gap-16">
+    <nav className="flex gap-16 items-center justify-between">
       <Link
         href={"/discover"}
         className={clsx(
-          "text-[22px] font-semibold hover:border-b border-standart_violet-500",
+          "text-[22px] font-semibold hover:-translate-y-1 transition-transform",
           {
-            "text-standart_violet-500": pathname === "/discover",
+            "text-_violet-500": pathname === "/discover",
           }
         )}
       >
@@ -23,9 +23,9 @@ export default function Navigation() {
       <Link
         href={"/forum"}
         className={clsx(
-          "text-[22px] font-semibold hover:border-b border-standart_violet-500",
+          "text-[22px] font-semibold hover:-translate-y-1 transition-transform",
           {
-            "text-standart_violet-500": pathname === "/forum",
+            "text-_violet-500": pathname === "/forum",
           }
         )}
       >
@@ -34,9 +34,9 @@ export default function Navigation() {
       <Link
         href={"/news"}
         className={clsx(
-          "text-[22px] font-semibold hover:border-b border-standart_violet-500",
+          "text-[22px] font-semibold hover:-translate-y-1 transition-transform",
           {
-            "text-standart_violet-500": pathname === "/news",
+            "text-_violet-500": pathname === "/news",
           }
         )}
       >
@@ -45,9 +45,9 @@ export default function Navigation() {
       <Link
         href={"/blog"}
         className={clsx(
-          "text-[22px] font-semibold hover:border-b border-standart_violet-500",
+          "text-[22px] font-semibold hover:-translate-y-1 transition-transform",
           {
-            "text-standart_violet-500": pathname === "/blog",
+            "text-_violet-500": pathname === "/blog",
           }
         )}
       >
