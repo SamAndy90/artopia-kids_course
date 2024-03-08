@@ -15,7 +15,7 @@ export const AvatarPopover = ({ image }: AvatarPopoverProps) => {
     <Popover as={"div"} className="relative leading-none">
       {({ open }) => (
         <>
-          <Popover.Button className={""}>
+          <Popover.Button className={"outline-none border-none"}>
             <span
               className={"w-9 h-9 rounded-full relative overflow-hidden block"}
             >

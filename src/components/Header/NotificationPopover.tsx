@@ -13,7 +13,7 @@ export const NotificationPopover = ({
     <Popover as={"div"} className="relative leading-none">
       {({ open }) => (
         <>
-          <Popover.Button className={""}>
+          <Popover.Button className={"outline-none border-none"}>
             <span
               className={
                 "relative before:absolute before:top-1 before:right-2 before:w-2 before:h-2 before:rounded-full before:bg-red-500"
