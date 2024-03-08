@@ -7,11 +7,11 @@ import NavBar from "./NavBar";
 import SignIn from "./SignInButton";
 import { IoMdSearch } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { MdNotificationsNone } from "react-icons/md";
 
 import { useState } from "react";
-import { Cart } from "components/Modals/Cart";
+import { Cart } from "components/Header/Cart";
 import { AvatarPopover } from "./AvatarPopover";
+import { NotificationPopover } from "./NotificationPopover";
 
 export default function Header() {
   const pathname = usePathname();
@@ -45,20 +45,22 @@ export default function Header() {
                 />
               </button>
               <AvatarPopover image={avatar} />
-              <span
-                className={
-                  "relative before:absolute before:top-1 before:right-2 before:w-2 before:h-2 before:rounded-full before:bg-red-500"
-                }
-              >
-                <MdNotificationsNone
-                  className={"w-9 h-9 hover:text-_violet-500 transition-colors"}
-                />
-              </span>
+              <NotificationPopover
+                notifications={[
+                  "Notification 1",
+                  "Notification 2",
+                  "Notification 3",
+                ]}
+              />
             </div>
           </div>
         </Container>
       </header>
-      <Cart isOpen={isOpen} closeModal={() => setIsOpen(false)} />
+      <Cart
+        artsToBuy={[]}
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+      />
     </>
   );
 }

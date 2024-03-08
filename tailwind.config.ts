@@ -6,6 +6,7 @@ const config: Config = {
     extend: {
       colors: {
         _violet: {
+          50: "#F8F2FF",
           300: "#623b94",
           400: "#7A45BD",
           500: "#A259FF",

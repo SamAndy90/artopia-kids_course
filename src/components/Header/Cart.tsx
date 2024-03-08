@@ -1,12 +1,23 @@
 import { Transition, Dialog } from "@headlessui/react";
+import Image from "next/image";
 import { Fragment } from "react";
+import { TbX } from "react-icons/tb";
+
+type Art = {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  image: string;
+};
 
 type CartProps = {
   isOpen: boolean;
   closeModal: () => void;
+  artsToBuy: Art[] | [];
 };
 
-export const Cart = ({ isOpen, closeModal }: CartProps) => {
+export const Cart = ({ isOpen, closeModal, artsToBuy }: CartProps) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -38,24 +49,27 @@ export const Cart = ({ isOpen, closeModal }: CartProps) => {
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
                 >
-                  Payment successful
+                  Ready to Buy
                 </Dialog.Title>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent you
-                    an email with all of the details of your order.
-                  </p>
-                </div>
 
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    onClick={closeModal}
-                  >
-                    Got it, thanks!
-                  </button>
-                </div>
+                <ul className="bg-white p-2 min-w-40 text-black-500 flex flex-col">
+                  {artsToBuy.length ? (
+                    artsToBuy.map((art) => {
+                      return (
+                        <li
+                          key={art.id}
+                          className={
+                            "py-3 px-2 text-lg rounded-md transition-colors hover:bg-_violet-50"
+                          }
+                        ></li>
+                      );
+                    })
+                  ) : (
+                    <li
+                      className={"py-3 px-2 text-lg rounded-md"}
+                    >{`Your cart is emty`}</li>
+                  )}
+                </ul>
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -64,3 +78,26 @@ export const Cart = ({ isOpen, closeModal }: CartProps) => {
     </Transition>
   );
 };
+
+export function ArtCard(art: Art) {
+  return (
+    <div>
+      <button>
+        <TbX />
+      </button>
+      <div className={"relative"}>
+        <Image
+          src={art.image}
+          alt={art.title}
+          fill
+          className={"object-cover"}
+        />
+      </div>
+      <div>
+        <h3>{art.title}</h3>
+        <p>{art.description}</p>
+        <span>{art.price}</span>
+      </div>
+    </div>
+  );
+}
