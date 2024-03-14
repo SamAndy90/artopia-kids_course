@@ -6,6 +6,8 @@ import z from "zod";
 import { TextInput } from "common/ui/inputs/TextInput";
 import { AuthFormButton } from "common/ui/Buttons/AuthFormButton";
 import { getDefaults } from "utils/zod";
+import { useAuth } from "contexts/auth";
+import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
   email: z.string().email("Email is required").default(""),
@@ -15,6 +17,8 @@ const loginSchema = z.object({
 type Form = z.infer<typeof loginSchema>;
 
 export function LoginForm() {
+  const { setIsLoggedIn } = useAuth();
+  const router = useRouter();
   const {
     handleSubmit,
     register,
@@ -27,6 +31,8 @@ export function LoginForm() {
 
   function onSubmit(data: Form) {
     console.log({ data });
+    setIsLoggedIn(true);
+    router.push("/");
     reset();
   }
 
