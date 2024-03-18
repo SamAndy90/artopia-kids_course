@@ -7,10 +7,10 @@ import { FiUserCheck } from "react-icons/fi";
 import { FiUpload } from "react-icons/fi";
 
 type ProfileProps = {
-  id: string;
+  id?: string;
 };
 
-export default function Profile(props: ProfileProps) {
+export default function Profile({ id }: ProfileProps) {
   return (
     <div className={"flex flex-col items-center -translate-y-[67px]"}>
       <div
@@ -42,34 +42,43 @@ export default function Profile(props: ProfileProps) {
       </p>
       <button
         className={
-          "flex gap-4 font-medium items-center px-[52px] py-3 bg-_violet-950 rounded mb-10"
+          "flex hover:bg-_violet-700 transition-colors gap-4 font-medium justify-center items-center px-[52px] py-3 bg-_violet-950 rounded mb-10"
         }
       >
         <FiUserCheck />
         <span>Follow</span>
       </button>
-      <div className={"flex gap-2 justify-between"}>
-        <div className={"flex flex-col gap-2"}>
-          <span>46</span>
-          <span>Followers</span>
+      <div
+        className={
+          "flex gap-2 justify-between py-4 border-t border-b w-full mx-1.5 mb-7"
+        }
+      >
+        <div className={"flex flex-col gap-0.5"}>
+          <span className={"font-semibold text-xl"}>46</span>
+          <span className={"font-medium text-sm"}>Followers</span>
         </div>
-        <div className={"flex flex-col gap-2"}>
-          <span>27</span>
-          <span>Following</span>
+        <div className={"flex flex-col gap-0.5"}>
+          <span className={"font-semibold text-xl"}>27</span>
+          <span className={"font-medium text-sm"}>Following</span>
         </div>
-        <div className={"flex flex-col gap-2"}>
-          <span>142</span>
-          <span>Items</span>
+        <div className={"flex flex-col gap-0.5"}>
+          <span className={"font-semibold text-xl"}>142</span>
+          <span className={"font-medium text-sm"}>Items</span>
         </div>
-        <div className={"flex flex-col gap-2"}>
-          <span>342</span>
-          <span>Likes</span>
+        <div className={"flex flex-col gap-0.5"}>
+          <span className={"font-semibold text-xl"}>342</span>
+          <span className={"font-medium text-sm"}>Likes</span>
         </div>
       </div>
-      <button>
+      <Link
+        href={`/artist/${id}/upload`}
+        className={
+          "flex gap-4 font-medium items-center hover:bg-_violet-700 transition-colors justify-center px-[52px] py-3 bg-_violet-950 rounded mb-10 w-full"
+        }
+      >
         <FiUpload />
         <span>Upload Product</span>
-      </button>
+      </Link>
     </div>
   );
 }

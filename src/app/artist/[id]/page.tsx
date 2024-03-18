@@ -1,4 +1,6 @@
 import Container from "common/Container";
+import Banner from "components/Artist/Banner";
+import Filter from "components/Artist/Filter";
 import Profile from "components/Artist/Profile";
 
 export default function ArtistPage() {
@@ -9,7 +11,10 @@ export default function ArtistPage() {
           <aside className={"basis-[402px] px-[30px]"}>
             <Profile />
           </aside>
-          <div className={"flex-1"}>hjhgkhjg</div>
+          <div className={"flex-1 py-20"}>
+            <Banner />
+            <Filter />
+          </div>
         </div>
       </Container>
     </section>
